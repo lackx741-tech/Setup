@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Generate a session token (use a proper JWT library in production)
-    const sessionId = `session-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    const sessionId = `session-${Date.now()}-${crypto.randomUUID()}`;
     const expiresAt = Math.floor(Date.now() / 1000) + 24 * 3600; // 24h
 
     const token = {

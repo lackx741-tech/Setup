@@ -37,7 +37,8 @@ export function Header() {
         ) : (
           <button
             onClick={() => connect({ connector: connectors[0] })}
-            className="btn-primary text-sm"
+            disabled={connectors.length === 0}
+            className="btn-primary text-sm disabled:opacity-50"
           >
             Connect Wallet
           </button>

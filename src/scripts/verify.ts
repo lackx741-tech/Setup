@@ -30,7 +30,7 @@ async function main() {
 
   const apiKey = process.env[explorer.apiKeyEnv];
   if (!apiKey) {
-    console.error(`${explorer.apiKeyEnv} environment variable not set`);
+    console.error('Explorer API key environment variable is not set. Check your .env file.');
     process.exit(1);
   }
 

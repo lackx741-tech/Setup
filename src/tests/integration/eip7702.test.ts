@@ -1,6 +1,5 @@
-import { describe, it, expect, beforeAll, jest } from '@jest/globals';
-import { createPublicClient, http, type Address, type Hex } from 'viem';
-import { sepolia } from 'viem/chains';
+import { describe, it, expect } from '@jest/globals';
+import { type Address } from 'viem';
 import { buildAuthorizationHash, validateDelegationRequest } from '../../lib/utils/delegation';
 import { validateAddress } from '../../lib/utils/validation';
 
@@ -40,49 +39,47 @@ describe('EIP-7702 Integration', () => {
 
   describe('validateDelegationRequest', () => {
     it('accepts a valid delegation request', () => {
-      const result = validateDelegationRequest({
-        authority: MOCK_AUTHORITY,
-        delegate: MOCK_DELEGATE,
+      const errors = validateDelegationRequest({
+        delegator: MOCK_AUTHORITY,
+        delegatee: MOCK_DELEGATE,
         chainId: 11155111,
         nonce: 0n,
       });
-      expect(result.valid).toBe(true);
-      expect(result.errors).toHaveLength(0);
+      expect(errors).toHaveLength(0);
     });
 
     it('rejects self-delegation', () => {
-      const result = validateDelegationRequest({
-        authority: MOCK_AUTHORITY,
-        delegate: MOCK_AUTHORITY,
+      const errors = validateDelegationRequest({
+        delegator: MOCK_AUTHORITY,
+        delegatee: MOCK_AUTHORITY,
         chainId: 11155111,
         nonce: 0n,
       });
-      expect(result.valid).toBe(false);
-      expect(result.errors.length).toBeGreaterThan(0);
+      expect(errors.length).toBeGreaterThan(0);
     });
 
     it('rejects invalid addresses', () => {
-      const result = validateDelegationRequest({
-        authority: '0xinvalid' as Address,
-        delegate: MOCK_DELEGATE,
+      const errors = validateDelegationRequest({
+        delegator: '0xinvalid' as Address,
+        delegatee: MOCK_DELEGATE,
         chainId: 11155111,
         nonce: 0n,
       });
-      expect(result.valid).toBe(false);
+      expect(errors.length).toBeGreaterThan(0);
     });
   });
 
   describe('validateAddress', () => {
     it('accepts valid checksummed address', () => {
-      expect(validateAddress(MOCK_AUTHORITY)).toBe(true);
+      expect(validateAddress(MOCK_AUTHORITY).valid).toBe(true);
     });
 
     it('rejects non-hex strings', () => {
-      expect(validateAddress('not-an-address')).toBe(false);
+      expect(validateAddress('not-an-address').valid).toBe(false);
     });
 
     it('rejects addresses of wrong length', () => {
-      expect(validateAddress('0x1234')).toBe(false);
+      expect(validateAddress('0x1234').valid).toBe(false);
     });
   });
 });

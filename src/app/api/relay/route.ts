@@ -1,6 +1,5 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { logger } from '@/lib/logger';
-import { relaySDK } from '@/lib/relay-sdk';
 import { type RelayRequest } from '@/types/relay';
 
 const log = logger.child('api:relay');

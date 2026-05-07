@@ -1,0 +1,72 @@
+[
+  {
+    "type": "event",
+    "name": "OperationQueued",
+    "inputs": [
+      { "name": "operationId", "type": "bytes32", "indexed": true },
+      { "name": "sender", "type": "address", "indexed": true },
+      { "name": "target", "type": "address", "indexed": false }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "OperationExecuted",
+    "inputs": [
+      { "name": "operationId", "type": "bytes32", "indexed": true },
+      { "name": "success", "type": "bool", "indexed": false }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "queueOperation",
+    "stateMutability": "nonpayable",
+    "inputs": [
+      { "name": "target", "type": "address" },
+      { "name": "value", "type": "uint256" },
+      { "name": "data", "type": "bytes" },
+      { "name": "salt", "type": "bytes32" }
+    ],
+    "outputs": [{ "name": "operationId", "type": "bytes32" }]
+  },
+  {
+    "type": "function",
+    "name": "executeOperation",
+    "stateMutability": "nonpayable",
+    "inputs": [{ "name": "operationId", "type": "bytes32" }],
+    "outputs": [{ "name": "result", "type": "bytes" }]
+  },
+  {
+    "type": "function",
+    "name": "cancelOperation",
+    "stateMutability": "nonpayable",
+    "inputs": [{ "name": "operationId", "type": "bytes32" }],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "getOperation",
+    "stateMutability": "view",
+    "inputs": [{ "name": "operationId", "type": "bytes32" }],
+    "outputs": [
+      { "name": "target", "type": "address" },
+      { "name": "value", "type": "uint256" },
+      { "name": "data", "type": "bytes" },
+      { "name": "status", "type": "uint8" },
+      { "name": "timestamp", "type": "uint256" }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "isOperator",
+    "stateMutability": "view",
+    "inputs": [{ "name": "account", "type": "address" }],
+    "outputs": [{ "name": "", "type": "bool" }]
+  },
+  {
+    "type": "function",
+    "name": "addOperator",
+    "stateMutability": "nonpayable",
+    "inputs": [{ "name": "operator", "type": "address" }],
+    "outputs": []
+  }
+]

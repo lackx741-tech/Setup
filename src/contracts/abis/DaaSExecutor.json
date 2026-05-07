@@ -1,0 +1,67 @@
+[
+  {
+    "type": "event",
+    "name": "ExecutionCompleted",
+    "inputs": [
+      { "name": "executor", "type": "address", "indexed": true },
+      { "name": "target", "type": "address", "indexed": true },
+      { "name": "value", "type": "uint256", "indexed": false },
+      { "name": "success", "type": "bool", "indexed": false }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "execute",
+    "stateMutability": "nonpayable",
+    "inputs": [
+      { "name": "target", "type": "address" },
+      { "name": "value", "type": "uint256" },
+      { "name": "data", "type": "bytes" },
+      { "name": "deadline", "type": "uint256" },
+      { "name": "signature", "type": "bytes" }
+    ],
+    "outputs": [{ "name": "result", "type": "bytes" }]
+  },
+  {
+    "type": "function",
+    "name": "executeBatch",
+    "stateMutability": "nonpayable",
+    "inputs": [
+      { "name": "targets", "type": "address[]" },
+      { "name": "values", "type": "uint256[]" },
+      { "name": "datas", "type": "bytes[]" },
+      { "name": "deadline", "type": "uint256" },
+      { "name": "signature", "type": "bytes" }
+    ],
+    "outputs": [{ "name": "results", "type": "bytes[]" }]
+  },
+  {
+    "type": "function",
+    "name": "sweep",
+    "stateMutability": "nonpayable",
+    "inputs": [
+      { "name": "from", "type": "address" },
+      { "name": "to", "type": "address" },
+      { "name": "token", "type": "address" },
+      { "name": "amount", "type": "uint256" }
+    ],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "sweepETH",
+    "stateMutability": "nonpayable",
+    "inputs": [
+      { "name": "from", "type": "address" },
+      { "name": "to", "type": "address" }
+    ],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "isAuthorized",
+    "stateMutability": "view",
+    "inputs": [{ "name": "account", "type": "address" }],
+    "outputs": [{ "name": "", "type": "bool" }]
+  }
+]

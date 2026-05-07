@@ -36,7 +36,10 @@ export function Header() {
           </div>
         ) : (
           <button
-            onClick={() => connect({ connector: connectors[0] })}
+            onClick={() => {
+              if (connectors.length === 0) return;
+              connect({ connector: connectors[0] });
+            }}
             disabled={connectors.length === 0}
             className="btn-primary text-sm disabled:opacity-50"
           >

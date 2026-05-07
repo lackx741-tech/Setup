@@ -57,8 +57,9 @@ export function buildSiweMessage(params: {
  * Generate a random nonce for SIWE messages.
  */
 export function generateNonce(): string {
-  return Math.random().toString(36).substring(2, 15) +
-    Math.random().toString(36).substring(2, 15);
+  const array = new Uint8Array(16);
+  crypto.getRandomValues(array);
+  return Array.from(array, (b) => b.toString(16).padStart(2, '0')).join('');
 }
 
 /**

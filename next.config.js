@@ -11,11 +11,9 @@ const nextConfig = {
     };
     return config;
   },
-  experimental: {
-    serverComponentsExternalPackages: ['viem', 'wagmi'],
-  },
+  serverExternalPackages: ['viem', 'wagmi'],
   images: {
-    domains: [],
+    remotePatterns: [],
   },
   headers: async () => [
     {

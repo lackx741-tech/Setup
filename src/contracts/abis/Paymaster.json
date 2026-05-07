@@ -1,0 +1,81 @@
+[
+  {
+    "type": "function",
+    "name": "validatePaymasterUserOp",
+    "stateMutability": "nonpayable",
+    "inputs": [
+      {
+        "name": "userOp",
+        "type": "tuple",
+        "components": [
+          { "name": "sender", "type": "address" },
+          { "name": "nonce", "type": "uint256" },
+          { "name": "initCode", "type": "bytes" },
+          { "name": "callData", "type": "bytes" },
+          { "name": "callGasLimit", "type": "uint256" },
+          { "name": "verificationGasLimit", "type": "uint256" },
+          { "name": "preVerificationGas", "type": "uint256" },
+          { "name": "maxFeePerGas", "type": "uint256" },
+          { "name": "maxPriorityFeePerGas", "type": "uint256" },
+          { "name": "paymasterAndData", "type": "bytes" },
+          { "name": "signature", "type": "bytes" }
+        ]
+      },
+      { "name": "userOpHash", "type": "bytes32" },
+      { "name": "maxCost", "type": "uint256" }
+    ],
+    "outputs": [
+      { "name": "context", "type": "bytes" },
+      { "name": "validationData", "type": "uint256" }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "postOp",
+    "stateMutability": "nonpayable",
+    "inputs": [
+      { "name": "mode", "type": "uint8" },
+      { "name": "context", "type": "bytes" },
+      { "name": "actualGasCost", "type": "uint256" }
+    ],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "deposit",
+    "stateMutability": "payable",
+    "inputs": [],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "getDeposit",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "withdrawTo",
+    "stateMutability": "nonpayable",
+    "inputs": [
+      { "name": "withdrawAddress", "type": "address" },
+      { "name": "amount", "type": "uint256" }
+    ],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "addStake",
+    "stateMutability": "payable",
+    "inputs": [{ "name": "unstakeDelaySec", "type": "uint32" }],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "owner",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "address" }]
+  }
+]

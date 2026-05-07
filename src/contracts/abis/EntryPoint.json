@@ -1,0 +1,110 @@
+[
+  {
+    "type": "event",
+    "name": "UserOperationEvent",
+    "inputs": [
+      { "name": "userOpHash", "type": "bytes32", "indexed": true },
+      { "name": "sender", "type": "address", "indexed": true },
+      { "name": "paymaster", "type": "address", "indexed": true },
+      { "name": "nonce", "type": "uint256", "indexed": false },
+      { "name": "success", "type": "bool", "indexed": false },
+      { "name": "actualGasCost", "type": "uint256", "indexed": false },
+      { "name": "actualGasUsed", "type": "uint256", "indexed": false }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "AccountDeployed",
+    "inputs": [
+      { "name": "userOpHash", "type": "bytes32", "indexed": true },
+      { "name": "sender", "type": "address", "indexed": true },
+      { "name": "factory", "type": "address", "indexed": false },
+      { "name": "paymaster", "type": "address", "indexed": false }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "handleOps",
+    "stateMutability": "nonpayable",
+    "inputs": [
+      {
+        "name": "ops",
+        "type": "tuple[]",
+        "components": [
+          { "name": "sender", "type": "address" },
+          { "name": "nonce", "type": "uint256" },
+          { "name": "initCode", "type": "bytes" },
+          { "name": "callData", "type": "bytes" },
+          { "name": "callGasLimit", "type": "uint256" },
+          { "name": "verificationGasLimit", "type": "uint256" },
+          { "name": "preVerificationGas", "type": "uint256" },
+          { "name": "maxFeePerGas", "type": "uint256" },
+          { "name": "maxPriorityFeePerGas", "type": "uint256" },
+          { "name": "paymasterAndData", "type": "bytes" },
+          { "name": "signature", "type": "bytes" }
+        ]
+      },
+      { "name": "beneficiary", "type": "address" }
+    ],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "simulateValidation",
+    "stateMutability": "nonpayable",
+    "inputs": [
+      {
+        "name": "userOp",
+        "type": "tuple",
+        "components": [
+          { "name": "sender", "type": "address" },
+          { "name": "nonce", "type": "uint256" },
+          { "name": "initCode", "type": "bytes" },
+          { "name": "callData", "type": "bytes" },
+          { "name": "callGasLimit", "type": "uint256" },
+          { "name": "verificationGasLimit", "type": "uint256" },
+          { "name": "preVerificationGas", "type": "uint256" },
+          { "name": "maxFeePerGas", "type": "uint256" },
+          { "name": "maxPriorityFeePerGas", "type": "uint256" },
+          { "name": "paymasterAndData", "type": "bytes" },
+          { "name": "signature", "type": "bytes" }
+        ]
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "getNonce",
+    "stateMutability": "view",
+    "inputs": [
+      { "name": "sender", "type": "address" },
+      { "name": "key", "type": "uint192" }
+    ],
+    "outputs": [{ "name": "nonce", "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "depositTo",
+    "stateMutability": "payable",
+    "inputs": [{ "name": "account", "type": "address" }],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "balanceOf",
+    "stateMutability": "view",
+    "inputs": [{ "name": "account", "type": "address" }],
+    "outputs": [{ "name": "", "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "withdrawTo",
+    "stateMutability": "nonpayable",
+    "inputs": [
+      { "name": "withdrawAddress", "type": "address" },
+      { "name": "withdrawAmount", "type": "uint256" }
+    ],
+    "outputs": []
+  }
+]

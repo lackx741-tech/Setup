@@ -1,0 +1,63 @@
+[
+  {
+    "type": "event",
+    "name": "DelegationSet",
+    "inputs": [
+      { "name": "delegator", "type": "address", "indexed": true },
+      { "name": "delegatee", "type": "address", "indexed": true },
+      { "name": "chainId", "type": "uint256", "indexed": false },
+      { "name": "nonce", "type": "uint256", "indexed": false }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "DelegationRevoked",
+    "inputs": [
+      { "name": "delegator", "type": "address", "indexed": true },
+      { "name": "delegatee", "type": "address", "indexed": true }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "setDelegation",
+    "stateMutability": "nonpayable",
+    "inputs": [
+      { "name": "delegatee", "type": "address" },
+      { "name": "expiry", "type": "uint256" },
+      { "name": "signature", "type": "bytes" }
+    ],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "revokeDelegation",
+    "stateMutability": "nonpayable",
+    "inputs": [],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "getDelegation",
+    "stateMutability": "view",
+    "inputs": [{ "name": "delegator", "type": "address" }],
+    "outputs": [
+      { "name": "delegatee", "type": "address" },
+      { "name": "expiry", "type": "uint256" },
+      { "name": "isActive", "type": "bool" }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "isDelegated",
+    "stateMutability": "view",
+    "inputs": [{ "name": "delegator", "type": "address" }],
+    "outputs": [{ "name": "", "type": "bool" }]
+  },
+  {
+    "type": "function",
+    "name": "getNonce",
+    "stateMutability": "view",
+    "inputs": [{ "name": "account", "type": "address" }],
+    "outputs": [{ "name": "", "type": "uint256" }]
+  }
+]
